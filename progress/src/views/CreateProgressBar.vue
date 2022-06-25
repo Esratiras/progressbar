@@ -3,8 +3,8 @@
     <h1>Welcome to Progresso</h1>
     <p>
       Progresso let you track your progress on everything. Percent by percent, day by day.
-      And share it with your friend.
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">URL</a>.
+<!--      And share it with your friend.-->
+<!--      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">URL</a>.-->
     </p>
     <button type="button" class="btn btn-info btn-lg" @click="createProgresso">Create</button>
   </div>
