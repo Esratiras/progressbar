@@ -5,12 +5,12 @@ import CreateProgressBar from "@/views/CreateProgressBar";
 import UpdateProgressBar from "@/views/UpdateProgressBar";
 const routes = [
     {
-        path: '/:progressId',
+        path: '/',
         name: 'Home',
         component: CreateProgressBar,
     },
     {
-        path: '/update',
+        path: '/update/:progressoId',
         name: 'UpdateProgressBar',
         component: UpdateProgressBar,
     }

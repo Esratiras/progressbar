@@ -1,13 +1,10 @@
 <template>
   <router-view />
-  <CreateProgressBar msg="Welcome to Progresso"/>
 </template>
 <script>
-import CreateProgressBar from "@/views/CreateProgressBar";
 export default {
   name: "App",
   components: {
-    CreateProgressBar
   }
   };
 

@@ -1,37 +1,28 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Welcome to Progresso</h1>
     <p>
       Progresso let you track your progress on everything. Percent by percent, day by day.
-      And share it wiht your friend.
+      And share it with your friend.
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">URL</a>.
     </p>
-    <button type="button" class="btn btn-info btn-lg" @click="routeCreate">Create</button>
+    <button type="button" class="btn btn-info btn-lg" @click="createProgresso">Create</button>
   </div>
 </template>
 
 <script>
-import router from "@/router";
-import axios from 'axios'
+import { mapActions } from "vuex";
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'createProgressBar',
+
   methods:{
-    routeCreate(){
-      router.push('/update')
-    },
-    fetchProgress(progressId){
-     return axios.get(`https://d986-212-175-197-5.ngrok.io/progresso/${progressId}`).then(({ data }) => data)
-    }
+    ...mapActions({
+      createProgresso:'createStore/createProgress',
+    }),
+
   },
   mounted() {
-    console.log(this.progressId)
-    this.progressId = this.$route.params.progressId
-    this.fetchProgress(this.progressId).then((data) => {
-console.log(data)
-    })
   },
 }
 </script>
