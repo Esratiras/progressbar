@@ -7,4 +7,4 @@ const progress = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Progress', progress)
+module.exports = mongoose.model('newProgresso', progress)

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const progressBar = require('./controllers/progressCreate');
+const progressBar = require('./controllers/createProgress');
 
 const bodyParser = require('body-parser')
 
@@ -28,6 +28,14 @@ mongoose.connection.on('open', () => {
 mongoose.connection.on('error', (err) => {
   console.log('MongoDb Connection Error',err)
 })
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  next();
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,8 +47,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
+app.use(allowCrossDomain);
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+    cors({
+        origin:'*',
+        credentials:true,            //access-control-allow-credentials:true
+        optionSuccessStatus:200,
+    })
+);
+app.options(
+    '*',
+    cors({
+      origin: true,
+      optionsSuccessStatus: 200,
+      credentials: true,
+    })
+);
 
 // 3 request
 //GET /progresso/{mongoId}

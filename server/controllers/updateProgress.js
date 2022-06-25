@@ -1,7 +1,7 @@
-const ProgressCreate = require("../models/Progress");
+const Progress = require("../models/newProgresso");
 
 module.exports = async (req, res, next) => {
-    const progress = new ProgressCreate({
+    const progress = new Progress({
         value: req.body.value
     })
     progress.save().then(()=>{
