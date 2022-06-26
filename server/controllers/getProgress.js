@@ -1,16 +1,16 @@
-const Progress = require('../models/newProgresso')
+const Progress = require('../models/Progresso')
 
-module.exports = async (req, res, next) => {
-    try{
-        const data = await Progress.findById(req.params.id);
+module.exports = (req, res) => {
 
-
-       return res.json(data)
-    }
-    catch(error){
-        return res.status(500).json({message: error.message})
-    }
+   return Progress.findById(req.params.id)
+        .then((data) => {
+            return res.json(data)
+        })
+        .catch(error => {
+            return res.status(500).json({message: error.message})
+        })
 }
+
 
 
 

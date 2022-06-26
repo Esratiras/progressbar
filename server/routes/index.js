@@ -3,7 +3,8 @@ const router = express.Router();
 
 router.post('/progresso/create', require('../controllers/createProgress'));
 router.get('/progresso/:id', require('../controllers/getProgress'));
-router.post('/progresso/:id', require('../controllers/updateProgress'));
+router.put('/progresso/:id', require('../controllers/updateProgress'));
+router.post('/progresso/:id', require('../controllers/resetValue'));
 
 // create endpointi olacak ve POST isteği atılacak ve yeni bir Progresso oluşturulacak ve id'si frontEnd'e dönecek.
 // POST /progresso/create

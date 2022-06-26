@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const progress = mongoose.Schema({
+const progresso = mongoose.Schema({
     value: {
         type:Number,
         required: true
     }
 })
 
-module.exports = mongoose.model('newProgresso', progress)
+module.exports = mongoose.model('Progresso', progresso)

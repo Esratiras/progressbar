@@ -1,19 +1,20 @@
-const Progress = require("../models/newProgresso");
+const Progresso = require("../models/Progresso");
 
 module.exports = async (req, res, next) => {
 
     const value = 0
-        const progress = new Progress({
-            value: value,
-        });
-    const savedProgress = await progress.save()
+    const progresso = new Progresso({
+        value: value,
+    });
 
-    progress.save().then(()=>{
-        // const Id = savedProgress._id.valueOf();
-        res.json({ user: savedProgress })
-    }).catch(err=>{
-        res.json({message:err})
-    })
+    return progresso.save()
+        .then(savedProgresso => {
+            // const Id = savedProgress._id.valueOf();
+            return res.json({user: savedProgresso})
+        })
+        .catch(err => {
+            return res.json({message: err})
+        })
 }
 
 
