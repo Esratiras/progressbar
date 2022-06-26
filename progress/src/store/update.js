@@ -37,7 +37,11 @@ export default {
         resetValue({state}, id) {
             return axios.post(`http://localhost:3000/progresso/${id}`).then(() => {
                 state.getProgress.value = 0
-
+                notify({
+                    title: "Reset Value",
+                    text: "Reset is successful.👌",
+                    type:"info"
+                });
             })
         }
     },
