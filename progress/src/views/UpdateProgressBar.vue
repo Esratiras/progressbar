@@ -5,24 +5,30 @@
       <h2 class="text">Progress</h2>
 
       <div class="progress">
-        <div class="progress-bar" :style="fullWidth" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-             aria-valuemax="100">{{ value }}%
+        <div class="progress-bar" :style="{'width':`${getProgress}%`}" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+             aria-valuemax="100">{{ getProgress }}%
         </div>
       </div>
     </div>
   </div>
   <br><br>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Enter value" aria-label="Enter value" v-model="value">
+    <input type="text" class="form-control" placeholder="Enter value" aria-label="Enter value" :value="value"
+           ref="progressValue"
+           :max="max"
+    >
     <div>
-      <button type="button" class="btn btn-info btn-lg" @click="updateValue()">Add</button>
+      <button type="button" class="btn btn-info btn-md mr-1" @click="localUpdate()">Add</button>
+      <button type="button" class="btn btn-danger btn-md" @click="resetValue(this.$route.params.progressoId)">Reset</button>
+
     </div>
+
   </div>
 
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
   data() {
@@ -33,18 +39,34 @@ export default {
   },
 
   methods: {
+    localUpdate() {
+
+      const value = parseInt(this.$refs.progressValue.value)
+      this.value = value
+      this.fullWidth = value
+
+      if (this.value < 100 || this.value === 100) {
+
+        this.updateValue({value: this.getProgress + this.value, id: this.$route.params.progressoId})
+        this.getProgresso(this.$route.params.progressoId)
+
+      }
+
+    },
     ...mapActions({
       updateValue: 'updateStore/updateProgressValue',
+      getProgresso: 'updateStore/getProgresso',
+      resetValue:'updateStore/resetValue'
     }),
   },
   mounted() {
-console.log(this.id)
+    this.getProgresso(this.$route.params.progressoId);
   },
   computed: {
+    ...mapGetters({
+      getProgress: "updateStore/getProgress"
+    }),
 
-    fullWidth() {
-      return `width:${this.value}%`;
-    },
   }
 }
 </script>

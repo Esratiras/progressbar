@@ -12,13 +12,17 @@ export default {
     actions: {
         createProgress({commit}) {
 
-            return axios.post('https://523d-212-175-197-5.ngrok.io/progresso/create').then(({data}) => {
+            return axios.post('http://localhost:3000/progresso/create').then(({data}) => {
 
                 const progressoId = data.user._id
 
-                commit('SET_DATA',data.user._id)
+                commit('SET_DATA', data.user._id)
 
-                router.push({name:'UpdateProgressBar',path: `/update/${progressoId}`, params: { progressoId:progressoId }})
+                router.push({
+                    name: 'UpdateProgressBar',
+                    path: `/update/${progressoId}`,
+                    params: {progressoId: progressoId}
+                })
             });
 
         },

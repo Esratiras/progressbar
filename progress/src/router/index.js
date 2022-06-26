@@ -10,7 +10,7 @@ const routes = [
         component: CreateProgressBar,
     },
     {
-        path: '/update/:progressoId',
+        path: '/progresso/:progressoId',
         name: 'UpdateProgressBar',
         component: UpdateProgressBar,
     }

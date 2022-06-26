@@ -1,5 +1,6 @@
 <template>
   <router-view />
+  <notifications width="400px" position="top right" :style="{fontSize: 20+'px'}"/>
 </template>
 <script>
 export default {
