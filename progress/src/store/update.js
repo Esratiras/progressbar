@@ -18,12 +18,12 @@ export default {
                 return axios.put(`http://localhost:3000/progresso/${data.id}`, {
                     value: data.value
                 }).then(() => {
-                    commit("setProgress", data)
-                    notify({
+                     data.value === 100 ? notify({
                         title: "Progress",
                         text: "You have reached 100%. Congratulations.😎",
                         type:"success"
-                    });
+                    }) : ''
+                    commit("setProgress", data)
                 });
 
             }
