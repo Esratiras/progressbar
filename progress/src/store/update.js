@@ -15,7 +15,8 @@ export default {
         updateProgressValue({commit}, data) {
             if (data.value < 100 || data.value === 100) {
 
-                return axios.put(`http://localhost:3000/progresso/${data.id}`, {
+                return axios.put(`http://127.0.0.1:3000/progresso/${data.id}`, {
+
                     value: data.value
                 }).then(() => {
                      data.value === 100 ? notify({
@@ -29,13 +30,13 @@ export default {
             }
         },
         getProgresso({commit}, id) {
-            return axios.get(`http://localhost:3000/progresso/${id}`).then((data) => {
+            return axios.get(`http://127.0.0.1:3000/progresso/${id}`).then((data) => {
                 commit("setProgress", data.data)
                 return data.data
             })
         },
         resetValue({state}, id) {
-            return axios.post(`http://localhost:3000/progresso/${id}`).then(() => {
+            return axios.post(`http://127.0.0.1:3000/progresso/${id}`).then(() => {
                 state.getProgress.value = 0
                 notify({
                     title: "Reset Value",
