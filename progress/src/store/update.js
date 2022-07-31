@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../services/axios";
 import { notify } from "@kyvg/vue3-notification";
 
 export default {
@@ -13,6 +13,7 @@ export default {
     },
     actions: {
         updateProgressValue({commit}, data) {
+
             if (data.value < 100 || data.value === 100) {
 
                 return axios.put(`http://backend.repiatx.com/progresso/${data.id}`, {

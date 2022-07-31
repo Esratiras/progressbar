@@ -11,8 +11,9 @@ export default {
     },
     actions: {
         createProgress({commit}) {
-
-            return axios.post('http://backend.repiatx.com/progresso/create').then(({data}) => {
+            const api = process.env.VUE_BASE_URL
+            console.log(api)
+            return axios.post(`${api}/progresso/create`).then(({data}) => {
 
                 const progressoId = data.user._id
 

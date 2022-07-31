@@ -5,26 +5,25 @@
       <h2 class="text">Progress</h2>
 
       <div class="progress">
-        <div class="progress-bar" :style="{'width':`${getProgress}%`}" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+        <div class="progress-bar" :style="{'width':`${getProgress}%`}" role="progressbar" aria-valuenow="75"
+             aria-valuemin="0"
              aria-valuemax="100">{{ getProgress }}%
         </div>
       </div>
     </div>
   </div>
   <br><br>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Enter value" aria-label="Enter value" :value="value"
-           ref="progressValue"
-           :max="max"
-    >
-    <div>
-      <button type="button" class="btn btn-info btn-md mr-1" @click="localUpdate()">Add</button>
-      <button type="button" class="btn btn-danger btn-md" @click="resetValue(this.$route.params.progressoId)">Reset</button>
-
+  <div class="form-control-group">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter value" aria-label="Enter value" :value="value"
+             ref="progressValue"
+             :max="max">
+      <div>
+        <button type="button" class="btn btn-info btn-md mr-1" @click="localUpdate()">Add</button>
+        <button type="button" class="btn btn-danger btn-md" @click="resetValue(this.$route.params.progressoId)">Reset</button>
+      </div>
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -56,7 +55,7 @@ export default {
     ...mapActions({
       updateValue: 'updateStore/updateProgressValue',
       getProgresso: 'updateStore/getProgresso',
-      resetValue:'updateStore/resetValue'
+      resetValue: 'updateStore/resetValue'
     }),
   },
   mounted() {
@@ -120,12 +119,13 @@ body {
   flex-direction: column;
   box-shadow: 0 30px 60px rgba(0, 0, 0, .4);
   transition: transform .2s;
+  border-radius: 20px;
 }
 
-/* .box:hover
-{
- transform:scale(1.2);
-} */
+.form-control-group{
+  display: flex;
+  justify-content: center;
+}
 .box .percent {
   width: 400px;
   position: relative;
